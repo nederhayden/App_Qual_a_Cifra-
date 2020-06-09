@@ -12,13 +12,13 @@ class Notas extends StatelessWidget {
       width: size.width,
       child: Stack(
         children: <Widget>[
-          CustomDraggable(text: 'Dó', left: 35, top: 25,),
-          CustomDraggable(text: 'Ré', left: 165, top: 25,),
-          CustomDraggable(text: 'Mi', left: 300, top: 25,),
-          CustomDraggable(text: 'Fá', left: 35, top: 100,),
-          CustomDraggable(text: 'Sol', left: 165, top: 100,),
-          CustomDraggable(text: 'Lá', left: 300, top: 100,),
-          CustomDraggable(text: 'Si', left: 165, top: 175,),
+          CustomDraggable(data: 1, text: 'Dó', left: 35, top: 25,),
+          CustomDraggable(data: 2, text: 'Ré', left: 165, top: 25,),
+          CustomDraggable(data: 3, text: 'Mi', left: 300, top: 25,),
+          CustomDraggable(data: 4, text: 'Fá', left: 35, top: 100,),
+          CustomDraggable(data: 5, text: 'Sol', left: 165, top: 100,),
+          CustomDraggable(data: 6, text: 'Lá', left: 300, top: 100,),
+          CustomDraggable(data: 7, text: 'Si', left: 165, top: 175,),
         ],
       ),
     );

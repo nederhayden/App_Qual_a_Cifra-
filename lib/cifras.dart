@@ -13,6 +13,7 @@ class Cifras extends StatelessWidget {
       child: Stack(
         children: <Widget>[
           CustomPositioned(text: 'A', color: Colors.green, top: 35, left: 15),
+          // https://github.com/thizer/tips_and_tricks/blob/master/lib/pages/DragNDropPage.dart
           CustomContainer(
             top: 35,
             left: 100,
