@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'home.dart';
+import 'teste.dart';
 
 void main() {
   runApp(QualACifra());
@@ -20,7 +21,7 @@ class QualACifra extends StatelessWidget {
         initialRoute: '/',
         // DEFINE AS ROTAS DAS PAGINAS
         routes: {
-          '/': (context) => Home(),
+          '/': (context) => Teste(),
         });
   }
 }
