@@ -26,7 +26,8 @@ class _Teste2State extends State<Teste2> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Score ${score.length} / 7'),
+        title: Text('Pontuação ${score.length} / 7'),
+        centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.refresh),
@@ -43,19 +44,19 @@ class _Teste2State extends State<Teste2> {
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.end,
-            children: cifras.keys.map((c) {
+            children: cifras.keys.map((cifras) {
               return Draggable<String>(
-                data: c,
-                child: Cifras(c: score[c] == true ? 'Teste' : c),
-                feedback: Cifras(c: c),
-                childWhenDragging: Cifras(c: 'VAZIO'),
+                data: cifras,
+                child: Cifras(cifras: score[cifras] == true ? '-' : cifras),
+                feedback: Cifras(cifras: cifras),
+                childWhenDragging: Cifras(cifras: 'arrastado'),
               );
             }).toList(),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: cifras.keys.map((n) => _buildDragTarget(n)).toList()
+            children: cifras.keys.map((notas) => _buildDragTarget(notas)).toList()
               ..shuffle(Random(seed)),
           ),
         ],
@@ -63,10 +64,10 @@ class _Teste2State extends State<Teste2> {
     );
   }
 
-  Widget _buildDragTarget(n) {
+  Widget _buildDragTarget(notas) {
     return DragTarget<String>(
       builder: (BuildContext context, List<String> incoming, List rejected) {
-        if (score[n] == true) {
+        if (score[notas] == true) {
           return Container(
             color: Colors.white,
             child: Text('Correto!'),
@@ -76,16 +77,18 @@ class _Teste2State extends State<Teste2> {
           );
         } else {
           return Container(
-            color: cifras[n],
+            child: Text('Colocar nome das notas aqui'),
+            alignment: Alignment.center,
+            color: cifras[notas],
             height: 80,
             width: 200,
           );
         }
       },
-      onWillAccept: (data) => data == n,
+      onWillAccept: (data) => data == notas,
       onAccept: (data) {
         setState(() {
-          score[n] = true;
+          score[notas] = true;
         });
       },
       onLeave: (data) {},
@@ -94,9 +97,9 @@ class _Teste2State extends State<Teste2> {
 }
 
 class Cifras extends StatelessWidget {
-  Cifras({Key key, this.c}) : super(key: key);
+  Cifras({Key key, this.cifras}) : super(key: key);
 
-  final String c;
+  final String cifras;
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +110,7 @@ class Cifras extends StatelessWidget {
         height: 50,
         padding: EdgeInsets.all(10),
         child: Text(
-          c,
+          cifras,
           style: TextStyle(
             color: Colors.black,
             fontSize: 20,
